@@ -1,0 +1,5 @@
+employee equals still incomplete so checks are not happening when adding employees (validator)
+program crashes when incorrect input happens past the filename for all nextInt nextDoubles
+program allows negative values as input
+program allows numbers as input for name and letters for id
+file not found exception when adding an employee (does not remove employee after remove is run)
