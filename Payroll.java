@@ -207,6 +207,7 @@ public class Payroll extends Employee
         double comm = 0;
         boolean valid = false;
         String fileName = "";
+        String error = "x";
 
         Employee emp = null;
         Scanner scan = new Scanner(System.in);
@@ -294,8 +295,9 @@ public class Payroll extends Employee
     {
         Employee check = null;        
         check = validateID(num);
+        double yearlySalary = 0.0;
 
-        if (check != null)
+        if ((check != null))
             System.out.println ("Weekly Salary for " + check.getName() + " is $" + check.calcWeeklySalary());
         else
             System.out.println ("The employee number " + num + " does not exist.");
@@ -303,25 +305,32 @@ public class Payroll extends Employee
 
     /**
      * Top Seller's Club requires member to have sales greater than $1,500 per week
-     * --TODO--
      */
     public void topEmployees()
     {
         int i = 0;
         boolean check = false;
+        boolean check2 = false;
 
         Commission com = new Commission();
-
+        System.out.println("Top Seller Club Members:");
         while (i < numPeople)
         {
             check = false;
             if (list.get(i).getType() == 'C')
             {
                 check = com.topSeller();
-                if (check == true)
-                    System.out.println(getName());
+                if (check = true)
+                {
+                    System.out.println(list.get(i).getName());
+                    check2 = true;
+                }
             }
             i++;
+        }
+        if (check2 = false)
+        {
+            System.out.println("No employee is a member of the top sellers club.");
         }
     }
 
@@ -346,20 +355,62 @@ public class Payroll extends Employee
 
     /**
      * Resets sales and hours worked
-     * -TODO-
      */
     public void reset()
     {
         int i = 0;
-
+        double sales = 0.0;
+        int hours = 0;
+        
+        Scanner input = new Scanner (System.in);
         while (i < numPeople)
         {
-
+            if (list.get(i).getType() == 'C')
+            {
+                setWeeklySales(0.0);
+            }
+            else if (list.get(i).getType() == 'H')
+            {
+                setHoursWorked(0);
+            }
             i++;
         }
-
     }
-
+    
+    /**
+     * Requests user for current week values
+     * --TODO--
+     */
+    public void newWeek()
+    {
+        int i = 0;
+        double sales = 0.0;
+        int hours = 0;
+        
+        Scanner input = new Scanner (System.in);
+        
+        System.out.println("New week processessing. Please enter new values.");
+        while (i < numPeople)
+        {
+            //Type H not being read 
+            if (list.get(i).getType() == 'H')
+            {
+                setHoursWorked(0);
+                System.out.print("Enter hours worked for " + list.get(i).getName() + " : ");
+                hours = input.nextInt();
+                setHoursWorked(hours);
+            }
+            else if (list.get(i).getType() == 'C')
+            {
+                setWeeklySales(0.0);
+                System.out.print("Enter weekly sales for " + list.get(i).getName() + " : ");
+                sales = input.nextDouble();
+                setWeeklySales(sales);
+            }            
+            i++;
+        }
+    }
+        
     /**
      * Exports data to new file
      */

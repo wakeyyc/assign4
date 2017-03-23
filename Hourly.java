@@ -41,7 +41,7 @@ public class Hourly extends Employee
         hoursWorked = hoursW;
     }
     //Helper Methods
-    public double calcWeeklySalary()
+    protected double calcWeeklySalary()
     {
         double salary = 0.0;
 

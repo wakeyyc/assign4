@@ -7,13 +7,13 @@ import java.io.*;
  * 
  */
 
-public class Employee
+public class Employee extends AbstractEmployee
 {
     protected String name;
     protected String employeeNumber;
     protected String department;
     protected char type;
-
+    
     //Constructors
     public Employee()
     {
@@ -44,7 +44,6 @@ public class Employee
     {
         return department;
     }
-
     public char getType()
     {
         return type;
@@ -72,7 +71,8 @@ public class Employee
 
     protected double calcWeeklySalary()
     {
-        return 0.0;
+        double salary = 0.0;
+        return salary;
     } 
 
     public String toString()
@@ -90,7 +90,7 @@ public class Employee
 
         out.println();
         out.print(toString());
-        System.out.println("File successfully written");
+        System.out.println("Successfully written to file");
 
         out.close();
     }

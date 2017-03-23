@@ -85,15 +85,15 @@ public class Commission extends Employee
      */
     public boolean topSeller()
     {
-        boolean employee = false;
+        boolean topSeller = false;
 
-        if ((yearlySales / 52) > 1500)
-            employee = true;
+        if ((yearlySales / 52.0) > 1500)
+            topSeller = true;
 
-        return employee;
+        return topSeller;
     }
 
-    public double calcWeeklySalary()
+    protected double calcWeeklySalary()
     {
         double salary = 0.0;
 
@@ -106,8 +106,8 @@ public class Commission extends Employee
     {
         String result;
 
-        result = name + " " + employeeNumber + " " + department + " " + type; 
-        result = result + " " + weeksWorked + " " + weeklySalary + " " + weeklySales + " " + commission;
+        result = super.toString();
+        result = result + " " + type + " " + weeksWorked + " " + weeklySalary + " " + weeklySales + " " + commission;
 
         return result;
     } 

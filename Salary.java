@@ -29,9 +29,11 @@ public class Salary extends Employee
         yearlySalary = yearSal;
     }
     //Helper Methods
-    public double calcWeeklySalary()
+    protected double calcWeeklySalary()
     {
-        double salary = yearlySalary * (1/52);
+        double salary = 0.0;
+        
+        salary = yearlySalary * (1.0/52.0);
 
         return salary;
     }    

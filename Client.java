@@ -16,7 +16,9 @@ public class Client
         {
             loadCheck = pr.loadData();
         }
-
+        
+        pr.newWeek();
+        
         while (choice != 'q')
         {
             showMenu();
