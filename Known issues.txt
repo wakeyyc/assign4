@@ -1,7 +1,7 @@
-employee equals still incomplete so checks are not happening when adding employees (validator)
+employee equals method does nothing?
 program crashes when incorrect input happens (e.g. a letter) for all nextInt nextDoubles
 program allows negative values as input
 program allows numbers as input for name and letters for id 
-Employee ID can be the same
+For some reason we are checking the name in add employee so I changed it to the number, duplicate names should be allowed. Therefore you can delete validatename method if you agree
 Does not remove employee from file? do we even need to remove it from the file?
 Should we have another file? Word doc -> This file will serve as the input file for next week so that it should be in the same format as the input file.

@@ -30,7 +30,7 @@ public class Client
             switch (choice)
             {
                 case 'a':
-                System.out.println("Please enter employee name: ");
+                System.out.println("Please enter a new employee number: ");
                 input = kb.nextLine();
                 pr.addEmployee(input);
                 break;

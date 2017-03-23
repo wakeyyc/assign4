@@ -139,7 +139,7 @@ public class Payroll extends Employee
         int i = 0;
         Employee check = null;
 
-        check = validateName(num);
+        check = validateID(num);
 
         if(check != null)
         {
@@ -212,9 +212,9 @@ public class Payroll extends Employee
         Employee emp = null;
         Scanner scan = new Scanner(System.in);
 
-        name = num;
-        System.out.println("Enter Employee ID for " + name + " : ");
-        empNum = scan.nextLine();
+        empNum = num;
+        System.out.println("Enter Employee Name: ");
+        name = scan.nextLine();
         System.out.println("Enter Department: ");
         dept = scan.nextLine();
 
