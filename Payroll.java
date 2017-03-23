@@ -4,11 +4,13 @@ public class Payroll extends Employee
 {
     private ArrayList<Employee> list;
     private int numPeople;
+    private String fileName;
 
     public Payroll ()
     {
         list = new ArrayList<Employee>();
         numPeople = 0;
+        fileName = "x";
     }    
 
     /**
@@ -16,7 +18,6 @@ public class Payroll extends Employee
      */
     public int loadData() throws IOException
     {
-        String fileName = "x";
         String name;
         String employeeNum;
         String department;
@@ -171,6 +172,7 @@ public class Payroll extends Employee
                 list.remove(check);
                 numPeople--;
                 System.out.println("Employee: " + num + " was removed.");
+                
             }
             else
             {
@@ -205,7 +207,6 @@ public class Payroll extends Employee
         double ySales = 0;
         double comm = 0;
         boolean valid = false;
-        String fileName = "";
         String error = "x";
 
         Employee emp = null;
@@ -420,14 +421,13 @@ public class Payroll extends Employee
      */
     private void exportData() throws IOException
     {
-        String fileName = "";
         String confirm = "";
 
         int i = 0;
         Scanner input = new Scanner (System.in);
 
         System.out.print("Exporting payroll data. Enter new file name (include .txt extension): ");
-        fileName = input.next();
+        fileName = input.nextLine();
 
         PrintWriter out = new PrintWriter (fileName);
         while (i < numPeople)

@@ -1,12 +1,6 @@
 import java.util.*;
 import java.io.*;
 
-/**
- * todo:
- * add loops for checking if numbers are valid
- * 
- */
-
 public class Employee
 {
     protected String name;
