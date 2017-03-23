@@ -7,7 +7,7 @@ import java.io.*;
  * 
  */
 
-public class Employee extends AbstractEmployee
+public class Employee
 {
     protected String name;
     protected String employeeNumber;
@@ -104,5 +104,12 @@ public class Employee extends AbstractEmployee
         "Department: \t" + department + "\n";
 
         return result;
+    }
+    
+    public void setWeeklySales(double wSales)
+    {
+    }
+    public void setHoursWorked(double hoursW)
+    {
     }
 }

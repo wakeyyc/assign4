@@ -30,6 +30,10 @@ public class Hourly extends Employee
     {
         return hoursWorked;
     }
+    public char getType()
+    {
+        return type;
+    }
     //Mutators
     public void setPayRate(double pay)
     {

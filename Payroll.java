@@ -114,7 +114,6 @@ public class Payroll extends Employee
 
     /**
      * Validates employee name and returns employee if found
-     * NOTE: Should we combine this with addEmployee()?
      */
     private Employee validateName(String num)
     {
@@ -153,7 +152,7 @@ public class Payroll extends Employee
     }
 
     /**
-     * -- Should the verify be in its own method? --
+     * Removes employee once user confirms prompt
      */
     public void removeEmployee(String num)
     {
@@ -341,14 +340,23 @@ public class Payroll extends Employee
         System.out.println("Salary Report");
         while (i < numPeople)
         {
-            list.get(i).printDetails();
+            System.out.print(list.get(i).getName() + "\t" + list.get(i).getEmployeeNumber() + "\t" + list.get(i).getDepartment() + " \t");
+            
+            if (list.get(i).getType() == 'H')
+                System.out.print("Hourly" + "\t\t");
+            else if (list.get(i).getType() == 'C')
+                System.out.print("Commission" + "\t");
+            else if (list.get(i).getType() == 'S')
+                System.out.print("Salary" + "\t\t");
+            
+            System.out.println(list.get(i).calcWeeklySalary());
             i++;
         }        
     }
 
     public void endOfWeek() throws IOException
     {
-        salaryReport();
+        System.out.println("Executing end of week process");
         reset();
         exportData();
     }
@@ -369,7 +377,7 @@ public class Payroll extends Employee
             {
                 setWeeklySales(0.0);
             }
-            else if (list.get(i).getType() == 'H')
+            else
             {
                 setHoursWorked(0);
             }
@@ -379,7 +387,6 @@ public class Payroll extends Employee
     
     /**
      * Requests user for current week values
-     * --TODO--
      */
     public void newWeek()
     {
@@ -391,22 +398,19 @@ public class Payroll extends Employee
         
         System.out.println("New week processessing. Please enter new values.");
         while (i < numPeople)
-        {
-            //Type H not being read 
-            if (list.get(i).getType() == 'H')
+        { 
+            if (list.get(i).getType() == 'C')
             {
-                setHoursWorked(0);
-                System.out.print("Enter hours worked for " + list.get(i).getName() + " : ");
-                hours = input.nextInt();
-                setHoursWorked(hours);
-            }
-            else if (list.get(i).getType() == 'C')
-            {
-                setWeeklySales(0.0);
                 System.out.print("Enter weekly sales for " + list.get(i).getName() + " : ");
                 sales = input.nextDouble();
                 setWeeklySales(sales);
             }            
+            else if (list.get(i).getType() == 'H')
+            {
+                System.out.print("Enter hours worked for " + list.get(i).getName() + " : ");
+                hours = input.nextInt();
+                setHoursWorked(hours);
+            }
             i++;
         }
     }

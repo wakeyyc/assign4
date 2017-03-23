@@ -22,6 +22,10 @@ public class Salary extends Employee
     {
         return yearlySalary;
     }
+    public char getType()
+    {
+        return type;
+    }
 
     //Mutator
     public void setYearlySalary(double yearSal)
