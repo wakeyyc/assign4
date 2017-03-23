@@ -4,13 +4,11 @@ public class Payroll extends Employee
 {
     private ArrayList<Employee> list;
     private int numPeople;
-    private String fileName;
 
     public Payroll ()
     {
         list = new ArrayList<Employee>();
         numPeople = 0;
-        fileName = "x";
     }    
 
     /**
@@ -18,6 +16,7 @@ public class Payroll extends Employee
      */
     public int loadData() throws IOException
     {
+        String fileName = "x";
         String name;
         String employeeNum;
         String department;
@@ -90,18 +89,6 @@ public class Payroll extends Employee
         }       
         numPeople += i;
         return i;
-        /**
-        Hourly x1 = new Hourly("Sally", "333-333-333", "Finance", 'H', 15.75, 0.0);
-        Salary x2 = new Salary("Arnie", "222-222-222", "Human Resources", 'S', 52000);
-        Commission x3 = new Commission("Bobby", "111-111-111", "Appliances", 'C', 10, 300, 0.0, 10000, 10.0);
-        Commission x4 = new Commission("Rich", "123-123-123", "Cookware", 'C', 20, 500.0, 0.0, 200000.0, 20.0);
-        list.add(x1);
-        list.add(x2);
-        list.add(x3); 
-        list.add(x4);
-        numPeople = 4;
-        return numPeople;
-         */
     }
 
     /**
@@ -219,6 +206,7 @@ public class Payroll extends Employee
         double ySales = 0;
         double comm = 0;
         boolean valid = false;
+        String fileName = "";
 
         Employee emp = null;
         Scanner scan = new Scanner(System.in);

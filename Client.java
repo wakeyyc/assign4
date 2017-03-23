@@ -1,6 +1,5 @@
 import java.util.Scanner;
 import java.io.*;
-test
 public class Client
 {
     public static void main(String args[]) throws IOException
