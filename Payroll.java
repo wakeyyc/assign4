@@ -100,7 +100,7 @@ public class Payroll extends Employee
     private boolean validateID(String num)
     {
         empCount = 0;
-        int count = 0, i = 0;
+        int i = 0;
         boolean found = false;
         Employee emp = new Employee();
         
@@ -109,7 +109,7 @@ public class Payroll extends Employee
         
         while(i < numPeople)
         {
-            count++;
+            empCount++;
             if (list.get(i).getEmployeeNumber().equals(num) == true)
             {
                 found = true;
