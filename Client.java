@@ -4,14 +4,14 @@ public class Client
 {
     public static void main(String args[]) throws IOException
     {
+        // define necessary variables here
         char choice = '\0';
         int loadCheck = 0;
         String input = "";
         Payroll pr = new Payroll();
 
         Scanner kb = new Scanner (System.in);
-        
-        System.out.println("Welcome to the Payroll Processing System!");
+        // place here the code for the processing requirements
         while(loadCheck == 0)
         {
             loadCheck = pr.loadData();

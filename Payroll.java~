@@ -110,7 +110,7 @@ public class Payroll extends Employee
         while(i < numPeople)
         {
             i++;
-            if (emp.equals(emp.getEmployeeNumber()) == true)
+            if (emp.equals(emp.getEmployeeNumber) == true)
             {
                 found = true;
                 empCount = i;
