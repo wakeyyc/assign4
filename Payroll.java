@@ -113,27 +113,6 @@ public class Payroll extends Employee
         return foundEmployee;
     }
 
-    /**
-     * Validates employee name and returns employee if found
-     */
-    private Employee validateName(String num)
-    {
-        Employee foundEmployee = null;
-        boolean found = false;
-        int i = 0;
-
-        while (i < numPeople && !found)
-        {
-            if (list.get(i).getName().equals(num))
-            {
-                foundEmployee = list.get(i);
-                found = true;
-            }
-            i++;
-        }
-        return foundEmployee;
-    }
-
     public void addEmployee(String num) throws IOException
     {
         int i = 0;
@@ -230,7 +209,6 @@ public class Payroll extends Employee
                 System.out.println("Enter hours worked this week: ");
                 hoursW = scan.nextDouble();
                 emp = new Hourly(name, empNum, dept, pay, hoursW);
-                emp.writeData(fileName);
 
                 System.out.println("Employee created successfully!"); 
 
@@ -241,7 +219,6 @@ public class Payroll extends Employee
                 System.out.println("Enter yearly salary amount: ");
                 yearSal = scan.nextDouble();
                 emp = new Salary(name, empNum, dept, yearSal);
-                emp.writeData(fileName);
 
                 System.out.println("Employee created successfully!"); 
 
@@ -260,7 +237,6 @@ public class Payroll extends Employee
                 System.out.println("Enter commission rate: ");
                 comm = scan.nextDouble();
                 emp = new Commission(name, empNum, dept, numWeeks, weekSal, wSales, ySales, comm);
-                emp.writeData(fileName);
 
                 System.out.println("Employee created successfully!"); 
 

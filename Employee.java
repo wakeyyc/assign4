@@ -7,7 +7,7 @@ public class Employee
     protected String employeeNumber;
     protected String department;
     protected char type;
-    
+
     //Constructors
     public Employee()
     {
@@ -38,6 +38,7 @@ public class Employee
     {
         return department;
     }
+
     public char getType()
     {
         return type;
@@ -60,7 +61,16 @@ public class Employee
     //Helper Methods
     public boolean equals (Employee e)
     {
-        return false;
+        boolean equals = false;
+
+        
+
+        if (equals == true){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     protected double calcWeeklySalary()
@@ -99,10 +109,11 @@ public class Employee
 
         return result;
     }
-    
+
     public void setWeeklySales(double wSales)
     {
     }
+
     public void setHoursWorked(double hoursW)
     {
     }
