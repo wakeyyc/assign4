@@ -5,9 +5,11 @@ public class Payroll extends Employee
     private ArrayList<Employee> list;
     private int numPeople;
     private String fileName;
+    private int empCount;
 
     public Payroll ()
     {
+        empCount = 0;
         list = new ArrayList<Employee>();
         numPeople = 0;
         fileName = "x";
@@ -97,6 +99,7 @@ public class Payroll extends Employee
      */
     private boolean validateID(String num)
     {
+        empCount = 0;
         int i = 0;
         boolean found = false;
         Employee emp = new Employee();
@@ -105,11 +108,13 @@ public class Payroll extends Employee
         
         while(i < numPeople)
         {
+            i++;
             if (emp.equals(emp) == true)
             {
                 found = true;
+                empCount = i;
+                return found;
             }
-            i++;
         }
        
         return found;
@@ -135,16 +140,15 @@ public class Payroll extends Employee
     {
         char verify = '\0';      
         
-        
         Scanner scan = new Scanner (System.in);        
         if (validateID(num) == true)
         {
-            System.out.println("You are about to delete " + check.getName() + " ID: " + check.getEmployeeNumber() + ".\n" +
+            System.out.println("You are about to delete " + list.get(empCount).getName() + " ID: " + list.get(empCount).getEmployeeNumber() + ".\n" +
                 "Enter 'Y' to delete or press any key to cancel");
             verify = scan.nextLine().toUpperCase().charAt(0);
             if (verify == 'Y')
             {
-                list.remove(check);
+                list.remove(empCount);
                 numPeople--;
                 System.out.println("Employee: " + num + " was removed.");
 
