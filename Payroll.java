@@ -257,11 +257,9 @@ public class Payroll extends Employee
     }
 
     public void printEmployee(String num)
-    {
-        Employee check = null;        
-
+    {       
         if (validateID(num) != false)
-            System.out.println (check.printDetails());
+            System.out.println (list.get(empCount).printDetails());
         else
             System.out.println ("The employee number " + num + " does not exist.");
     }
@@ -270,12 +268,11 @@ public class Payroll extends Employee
      * Calculates and prints weekly salary of employee
      */
     public void weeklySalary(String num)
-    {
-        Employee check = null;        
+    {      
         double yearlySalary = 0.0;
 
         if (validateID(num) != false)
-            System.out.println ("Weekly Salary for " + check.getName() + " is $" + check.calcWeeklySalary());
+            System.out.println ("Weekly Salary for " + list.get(empCount).getName() + " is $" + list.get(empCount).calcWeeklySalary());
         else
             System.out.println ("The employee number " + num + " does not exist.");
     }
