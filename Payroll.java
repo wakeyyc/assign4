@@ -39,7 +39,7 @@ public class Payroll extends Employee
 
         Scanner input = new Scanner (System.in);
 
-        System.out.println("Enter file name to load: ");
+        System.out.println("Enter file name to load data: ");
         try{
             fileName = input.nextLine();
             Scanner file = new Scanner (new File(fileName));
@@ -89,7 +89,8 @@ public class Payroll extends Employee
         switch (fileName){
             case "x": //Invalid Input repeats prompt
             break;
-        }       
+        }
+        System.out.println("File successfully loaded!");
         numPeople += i;
         return i;
     }
@@ -155,7 +156,7 @@ public class Payroll extends Employee
             }
             else
             {
-                System.out.println(getName() + " will not be removed.");
+                System.out.println(list.get(empCount).getName() + " will not be removed.");
             }
         }
         else 
@@ -376,8 +377,7 @@ public class Payroll extends Employee
         
         Scanner input = new Scanner (System.in);
         
-
-        System.out.println("New week processessing. Please enter new values.");
+        System.out.println("New week processing. Please enter new values for the following employees.");
         while (i < numPeople)
         { 
             if (list.get(i).getType() == 'C')
@@ -396,6 +396,7 @@ public class Payroll extends Employee
             }
             i++;
         }
+        System.out.println("Values have been successfully set.");
     }
 
     /**
