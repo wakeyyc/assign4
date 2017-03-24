@@ -61,16 +61,14 @@ public class Employee
     //Helper Methods
     public boolean equals (Employee e)
     {
-        boolean equals = false;
+        boolean found = false;
 
-        
+        if (e.getEmployeeNumber().equals(employeeNumber))
+        {
+            found = true;
+        }
 
-        if (equals == true){
-            return true;
-        }
-        else {
-            return false;
-        }
+        return found;
     }
 
     protected double calcWeeklySalary()
@@ -108,15 +106,5 @@ public class Employee
         "Department: \t" + department + "\n";
 
         return result;
-    }
-
-    public void setWeeklySales(double wSales)
-    {
-    }
-    public void setHoursWorked(double hoursW)
-    {
-    }
-    public void setWeeksWorked(int weeksWorked)
-    {
     }
 }

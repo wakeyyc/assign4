@@ -1,3 +1,0 @@
-program crashes when incorrect input happens (e.g. a letter) for all nextInt nextDoubles
-program allows negative values as input
-program allows numbers as input for name and letters for id 

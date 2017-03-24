@@ -24,7 +24,6 @@ public class Client
             showMenu();
             System.out.println ("Please enter your choice or 'Q' to exit");
             choice = kb.next().toLowerCase().charAt(0);
-            Employee valid = null;
             kb.nextLine();
 
             switch (choice)

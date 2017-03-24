@@ -95,32 +95,29 @@ public class Payroll extends Employee
     /**
      * Validates employee number and returns employee if found
      */
-    private Employee validateID(String num)
+    private boolean validateID(String num)
     {
-        Employee foundEmployee = null;
-        boolean found = false;
         int i = 0;
-
-        while (i < numPeople && !found)
+        boolean found = false;
+        Employee emp = new Employee();
+        
+        emp.setEmployeeNumber(num);
+        
+        while(i < numPeople)
         {
-            if (list.get(i).getEmployeeNumber().equals(num))
+            if (emp.equals(emp) == true)
             {
-                foundEmployee = list.get(i);
                 found = true;
             }
             i++;
         }
-        return foundEmployee;
+       
+        return found;
     }
 
     public void addEmployee(String num) throws IOException
     {
-        int i = 0;
-        Employee check = null;
-
-        check = validateID(num);
-
-        if(check != null)
+        if(validateID(num) != false)
         {
             System.out.println("Employee cannot be created. Employee already exists."); 
         }
@@ -136,14 +133,13 @@ public class Payroll extends Employee
      */
     public void removeEmployee(String num)
     {
-        char verify = '\0';
-        Employee check = null;        
-        check = validateID(num);
-
+        char verify = '\0';      
+        
+        
         Scanner scan = new Scanner (System.in);        
-        if (check != null)
+        if (validateID(num) == true)
         {
-            System.out.println("You are about to delete " + getName() + " ID: " + check.getEmployeeNumber() + ".\n" +
+            System.out.println("You are about to delete " + check.getName() + " ID: " + check.getEmployeeNumber() + ".\n" +
                 "Enter 'Y' to delete or press any key to cancel");
             verify = scan.nextLine().toUpperCase().charAt(0);
             if (verify == 'Y')
@@ -259,9 +255,8 @@ public class Payroll extends Employee
     public void printEmployee(String num)
     {
         Employee check = null;        
-        check = validateID(num);
 
-        if (check != null)
+        if (validateID(num) != false)
             System.out.println (check.printDetails());
         else
             System.out.println ("The employee number " + num + " does not exist.");
@@ -273,10 +268,9 @@ public class Payroll extends Employee
     public void weeklySalary(String num)
     {
         Employee check = null;        
-        check = validateID(num);
         double yearlySalary = 0.0;
 
-        if ((check != null))
+        if (validateID(num) != false)
             System.out.println ("Weekly Salary for " + check.getName() + " is $" + check.calcWeeklySalary());
         else
             System.out.println ("The employee number " + num + " does not exist.");
@@ -350,21 +344,20 @@ public class Payroll extends Employee
         double sales = 0.0;
         int hours = 0;
         int placeHold = 0;
-        int weeksWorked = 0;
-        Commission com = new Commission ();
         
-        Scanner input = new Scanner (System.in);
         while (i < numPeople)
         {
             if (list.get(i).getType() == 'C')
             {
-                setWeeklySales(0.0);
-                placeHold = getWeeksWorked() + 1;
-                setWeeksWorked(placeHold);
+                Commission com = (Commission)list.get(i);
+                com.setWeeklySales(0.0);
+                placeHold = com.getWeeksWorked() + 1;
+                com.setWeeksWorked(placeHold);
             }
-            else
+            else if (list.get(i).getType() == 'H')
             {
-                setHoursWorked(0);
+                Hourly hour = (Hourly)list.get(i);
+                hour.setHoursWorked(0);
             }
             i++;
         }
@@ -379,23 +372,26 @@ public class Payroll extends Employee
         int i = 0;
         double sales = 0.0;
         int hours = 0;
-
+        
         Scanner input = new Scanner (System.in);
+        
 
         System.out.println("New week processessing. Please enter new values.");
         while (i < numPeople)
         { 
             if (list.get(i).getType() == 'C')
             {
+                Commission com = (Commission)list.get(i);
                 System.out.print("Enter weekly sales for " + list.get(i).getName() + " : ");
                 sales = input.nextDouble();
-                setWeeklySales(sales);
+                com.setWeeklySales(sales);
             }            
             else if (list.get(i).getType() == 'H')
             {
+                Hourly hour = (Hourly)list.get(i);
                 System.out.print("Enter hours worked for " + list.get(i).getName() + " : ");
                 hours = input.nextInt();
-                setHoursWorked(hours);
+                hour.setHoursWorked(hours);
             }
             i++;
         }

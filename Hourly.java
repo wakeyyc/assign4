@@ -30,6 +30,7 @@ public class Hourly extends Employee
     {
         return hoursWorked;
     }
+    
     public char getType()
     {
         return type;
