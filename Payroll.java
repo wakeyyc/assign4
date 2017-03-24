@@ -349,13 +349,18 @@ public class Payroll extends Employee
         int i = 0;
         double sales = 0.0;
         int hours = 0;
-
+        int placeHold = 0;
+        int weeksWorked = 0;
+        Commission com = new Commission ();
+        
         Scanner input = new Scanner (System.in);
         while (i < numPeople)
         {
             if (list.get(i).getType() == 'C')
             {
                 setWeeklySales(0.0);
+                placeHold = getWeeksWorked() + 1;
+                setWeeksWorked(placeHold);
             }
             else
             {
@@ -367,6 +372,7 @@ public class Payroll extends Employee
 
     /**
      * Requests user for current week values
+     * Increases weeks worked
      */
     public void newWeek()
     {

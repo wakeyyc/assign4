@@ -113,8 +113,10 @@ public class Employee
     public void setWeeklySales(double wSales)
     {
     }
-
     public void setHoursWorked(double hoursW)
+    {
+    }
+    public void setWeeksWorked(int weeksWorked)
     {
     }
 }
