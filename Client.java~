@@ -11,7 +11,7 @@ public class Client
         Payroll pr = new Payroll();
 
         Scanner kb = new Scanner (System.in);
-        // pla ce here the code for the processing requirements
+        // place here the code for the processing requirements
         while(loadCheck == 0)
         {
             loadCheck = pr.loadData();

@@ -63,7 +63,7 @@ public class Employee
     {
         boolean found = false;
 
-        if (e.getEmployeeNumber().equals(employeeNumber))
+        if (e.getEmployeeNumber() == employeeNumber)
         {
             found = true;
         }
