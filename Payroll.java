@@ -151,7 +151,7 @@ public class Payroll extends Employee
                 list.remove(check);
                 numPeople--;
                 System.out.println("Employee: " + num + " was removed.");
-                
+
             }
             else
             {
@@ -204,10 +204,13 @@ public class Payroll extends Employee
 
             if (type == 'H')
             {
+
                 System.out.println("Enter pay rate: ");
                 pay = scan.nextDouble();
+
                 System.out.println("Enter hours worked this week: ");
                 hoursW = scan.nextDouble();
+
                 emp = new Hourly(name, empNum, dept, pay, hoursW);
 
                 System.out.println("Employee created successfully!"); 
@@ -318,14 +321,14 @@ public class Payroll extends Employee
         while (i < numPeople)
         {
             System.out.print(list.get(i).getName() + "\t" + list.get(i).getEmployeeNumber() + "\t" + list.get(i).getDepartment() + " \t");
-            
+
             if (list.get(i).getType() == 'H')
                 System.out.print("Hourly" + "\t\t");
             else if (list.get(i).getType() == 'C')
                 System.out.print("Commission" + "\t");
             else if (list.get(i).getType() == 'S')
                 System.out.print("Salary" + "\t\t");
-            
+
             System.out.println(list.get(i).calcWeeklySalary());
             i++;
         }        
@@ -346,7 +349,7 @@ public class Payroll extends Employee
         int i = 0;
         double sales = 0.0;
         int hours = 0;
-        
+
         Scanner input = new Scanner (System.in);
         while (i < numPeople)
         {
@@ -361,7 +364,7 @@ public class Payroll extends Employee
             i++;
         }
     }
-    
+
     /**
      * Requests user for current week values
      */
@@ -370,9 +373,9 @@ public class Payroll extends Employee
         int i = 0;
         double sales = 0.0;
         int hours = 0;
-        
+
         Scanner input = new Scanner (System.in);
-        
+
         System.out.println("New week processessing. Please enter new values.");
         while (i < numPeople)
         { 
@@ -391,7 +394,7 @@ public class Payroll extends Employee
             i++;
         }
     }
-        
+
     /**
      * Exports data to new file
      */
@@ -402,8 +405,13 @@ public class Payroll extends Employee
         int i = 0;
         Scanner input = new Scanner (System.in);
 
-        System.out.print("Exporting payroll data. Enter new file name (include .txt extension): ");
+        System.out.print("Exporting payroll data. Enter new file name: ");
         fileName = input.nextLine();
+
+        if(!(fileName.substring(fileName.length() - 4)).equals(".txt"))
+        {
+            fileName += ".txt";
+        }
 
         PrintWriter out = new PrintWriter (fileName);
         while (i < numPeople)
