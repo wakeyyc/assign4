@@ -384,7 +384,6 @@ public class Payroll extends Employee
         System.out.println("New week processessing. Please enter new values.");
         while (i < numPeople)
         { 
-            valid = false;
             if (list.get(i).getType() == 'C')
             {
                 Commission com = (Commission)list.get(i);

@@ -395,7 +395,7 @@ public class Payroll extends Employee
                     i++;
                 }
                 catch (InputMismatchException a) {
-                    System.out.println("no");
+                    System.out.println("Invalid input, please input an integer.");
                 }
             }            
             else if (list.get(i).getType() == 'H')
@@ -409,7 +409,7 @@ public class Payroll extends Employee
                     i++;
                 }
                 catch (InputMismatchException a) {
-                    System.out.println("no");
+                    System.out.println("Invalid input, please input an integer.");
                 }
             }
             else if (list.get(i).getType() == 'S')
