@@ -6,13 +6,13 @@ public class Client
     {
         // define necessary variables here
         char choice = '\0';
-        int loadCheck = 0;
+        boolean loadCheck = false;
         String input = "";
         Payroll pr = new Payroll();
 
         Scanner kb = new Scanner (System.in);
         // pla ce here the code for the processing requirements
-        while(loadCheck == 0)
+        while(loadCheck == false)
         {
             loadCheck = pr.loadData();
         }

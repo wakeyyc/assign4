@@ -4,23 +4,24 @@ public class Payroll extends Employee
 {
     private ArrayList<Employee> list;
     private int numPeople;
-    private String fileName;
     private int empCount;
+    private Scanner file;
 
     public Payroll ()
     {
         empCount = 0;
         list = new ArrayList<Employee>();
         numPeople = 0;
-        fileName = "x";
+
     }    
 
     /**
      *  Loads information from user text file
      */
-    public int loadData() throws IOException
+    public boolean loadData() throws IOException
     {
         String name;
+        String fileName;
         String employeeNum;
         String department;
         char type;
@@ -34,17 +35,27 @@ public class Payroll extends Employee
         double yearlySales;
         double commission;       
         int i = 0;
+        boolean valid = false;
 
         Employee emp1 = new Employee();
 
         Scanner input = new Scanner (System.in);
 
         System.out.println("Enter file name to load: ");
-        try{
-            fileName = input.nextLine();
-            Scanner file = new Scanner (new File(fileName));
-            while (file.hasNextLine())
-            {
+
+        while (valid == false) {
+            try {
+                fileName = input.nextLine();
+                file = new Scanner (new File(fileName));
+                valid = true;
+            }
+            catch (FileNotFoundException a) {
+                System.out.println("Invalid file name.");
+            }
+        }
+
+        while (file.hasNext()) {
+            try{
                 name = file.next();
                 employeeNum = file.next();
                 department = file.next();
@@ -81,17 +92,12 @@ public class Payroll extends Employee
                 }
                 i++;
             }
-            file.close();
+            catch (NoSuchElementException a) {
+                System.out.println("Error found in file, was ignored.");
+            }  
         }
-        catch (FileNotFoundException a) {
-            System.out.println("Invalid file name.");
-        }
-        switch (fileName){
-            case "x": //Invalid Input repeats prompt
-            break;
-        }       
-        numPeople += i;
-        return i;
+        numPeople = i;
+        return valid;
     }
 
     /**
@@ -100,16 +106,15 @@ public class Payroll extends Employee
     private boolean validateID(String num)
     {
         empCount = 0;
-        int count = 0, i = 0;
+        int i = 0;
         boolean found = false;
         Employee emp = new Employee();
-        
+
         emp.setEmployeeNumber(num);
-        
-        
+
         while(i < numPeople)
         {
-            count++;
+            empCount++;
             if (list.get(i).getEmployeeNumber().equals(num) == true)
             {
                 found = true;
@@ -118,7 +123,7 @@ public class Payroll extends Employee
             }
             i++;
         }
-       
+
         return found;
     }
 
@@ -141,7 +146,7 @@ public class Payroll extends Employee
     public void removeEmployee(String num)
     {
         char verify = '\0';      
-        
+
         Scanner scan = new Scanner (System.in);        
         if (validateID(num) == true)
         {
@@ -347,7 +352,7 @@ public class Payroll extends Employee
         double sales = 0.0;
         int hours = 0;
         int placeHold = 0;
-        
+
         while (i < numPeople)
         {
             if (list.get(i).getType() == 'C')
@@ -375,28 +380,43 @@ public class Payroll extends Employee
         int i = 0;
         double sales = 0.0;
         int hours = 0;
-        
-        Scanner input = new Scanner (System.in);
-        
 
         System.out.println("New week processessing. Please enter new values.");
         while (i < numPeople)
         { 
+            valid = false;
             if (list.get(i).getType() == 'C')
             {
                 Commission com = (Commission)list.get(i);
                 System.out.print("Enter weekly sales for " + list.get(i).getName() + " : ");
-                sales = input.nextDouble();
-                com.setWeeklySales(sales);
+                try {
+                    Scanner input = new Scanner (System.in);
+                    sales = input.nextDouble();
+                    com.setWeeklySales(sales);
+                    i++;
+                }
+                catch (InputMismatchException a) {
+                    System.out.println("no");
+                }
             }            
             else if (list.get(i).getType() == 'H')
             {
                 Hourly hour = (Hourly)list.get(i);
                 System.out.print("Enter hours worked for " + list.get(i).getName() + " : ");
-                hours = input.nextInt();
-                hour.setHoursWorked(hours);
+                try {
+                    Scanner input = new Scanner (System.in);
+                    hours = input.nextInt();
+                    hour.setHoursWorked(hours);
+                    i++;
+                }
+                catch (InputMismatchException a) {
+                    System.out.println("no");
+                }
             }
-            i++;
+            else if (list.get(i).getType() == 'S')
+            {
+                i++;
+            }
         }
     }
 
@@ -406,6 +426,7 @@ public class Payroll extends Employee
     private void exportData() throws IOException
     {
         String confirm = "";
+        String fileName;
 
         int i = 0;
         Scanner input = new Scanner (System.in);
